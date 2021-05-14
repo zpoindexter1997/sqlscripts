@@ -14,6 +14,7 @@ CREATE TABLE Students (		--Create a table named Students
 	Zip varchar(10) not null, --ColumnName, DataType, not allowed to be null
 	AssessmentScore int not null --ColumnName, DataType, not allowed to be null
 );
+
 -- Create Assessments Table
 use BootCampDb;			--Using BootCampDb Database
 CREATE TABLE Assessments (		--Create a table named Assessments
@@ -67,12 +68,32 @@ delete from Students --Deleting from TableName
 	where FirstName = 'Zha''Quon'; --Where ColumnName (Boolean)
 
 
---Altering Customers table
-ALTER TABLE Customers --Alter -> Table -> Customers
+--ALTER Adding to Customers table
+ALTER TABLE Customers --Alter -> Table -> TableName
 	Add Updated datetime; --Adding column ColumnName, DataType
 
-ALTER TABLE Customers --Alter -> Table -> Customers
+--ALTER Altering Customers table
+ALTER TABLE Customers --Alter -> Table -> TableName
 	Alter Column Name varchar(50) not null; --Altering the Column ColumnName, DataType, not null
 
-ALTER TABLE Customers --Alter -> Table -> Customers
+--ALTER Dropping Updated Column from Customers Table
+ALTER TABLE Customers --Alter -> Table -> TableName
 	DROP COLUMN Updated; --Delete Column ColumnName
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* KEY
+
+
+
+*/
