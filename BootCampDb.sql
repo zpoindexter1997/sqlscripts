@@ -17,10 +17,10 @@ CREATE TABLE Students (
 -- Create Assessments Table
 use BootCampDb;
 CREATE TABLE Assessments (
-	Id int primary key identity(1,1),
+	Id int primary key identity(1,1), /* ColumnName, DateType (Integer), Determined as PK, starting (at 1, increments of 1)*/
 	StudentId int not null foreign key references Students(Id), /* ColumnName, DataType, Determined as FK, refers to (TableName(PK Column) */
-	Topic varchar(30) not null,
-	Score int not null,
+	Topic varchar(30) not null, /*ColumnName, DataType, not allowed to be null*/
+	Score int not null, /*ColumnName, DataType, not allowed to be null*/
 );
 
 
