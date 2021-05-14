@@ -103,7 +103,32 @@ INSERT Genres
 -- Update Genres into Albums
 UPDATE Albums set
 	GenresId = ((select Id from Genres where Genre = 'Classical'))
-		where BandsId = (select Id from Bands where BandName like 'Gre%')
+		where BandsId = (select Id from Bands where BandName like 'Gre%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Heavy Metal'))
+		where BandsId = (select Id from Bands where BandName like 'ZC%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Heavy Metal'))
+		where BandsId = (select Id from Bands where BandName like 'JONA%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Heavy Metal'))
+		where BandsId = (select Id from Bands where BandName like 'Kat%')
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Jazz'))
+		where BandsId = (select Id from Bands where BandName like 'Joh%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Pop'))
+		where BandsId = (select Id from Bands where BandName like 'Cha%' or BandName like 'Sar%' or BandName like 'The Ma%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Rap'))
+		where BandsId = (select Id from Bands where BandName like 'Jeff%');
+
 */
 
 /*
@@ -118,6 +143,13 @@ ALTER TABLE Albums
 ADD GenresId int foreign key references Genres(Id)
 */
 
+/*
+--Alter Date Datatype to datetime format
+ALTER TABLE Albums
+ALTER COLUMN Date datetime not null 
+*/
+
+
 -- View All Tables
 select * from bands b
 	left join Albums a
@@ -128,3 +160,4 @@ select * from bands b
 		on a.GenresId = g.Id
 
 select * from Genres
+

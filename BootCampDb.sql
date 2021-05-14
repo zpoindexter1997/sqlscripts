@@ -38,25 +38,41 @@ CREATE TABLE Customers (			--Create a table named Customers
 INSERT Students		--Insert this data into Students table
 	(FirstName, LastName, Address, City, State, Zip, AssessmentScore) --(ColumnName1, ColumnName2...)
 		VALUES('Zha''Quon', 'Poindexter', '2101 Lincoln Avenue', 'Saint Albans', 'WV', '25177',82); --What I want to enter into (ColumnName1, ColumnName2...)
+
 -- Insert my Assessment score
 INSERT Assessments --Insert this data into Assessments table
 	(StudentId, Topic, Score) --(ColumnName1, ColumnName2...)
 		VALUES((select Id from Students where FirstName = 'Zha''Quon'), 'Git and Github', 110); --What I want to enter into (ColumnName1, ColumnName2...)
-		
-SELECT * from Students s
-	join Assessments a
-		on s.Id = a.StudentId;
 
-SELECT * from Customers;
-
-
+--Insert Customers info
 INSERT Customers
 	(Code, Name, Sales)
 		VALUES
 			('WM','Walmart',377554.64),
 			('OM','Oscar Meyer', 26243.36),
 			('GS','GameStop', 23525.49)
+
 INSERT Customers
 	(Code, Name, Sales, Active)
 		VALUES
 			('WG', 'WasteManagement', 25213.45, 0)
+
+--Updating Students
+UPDATE Students set --Updating TableName set
+	AssessmentScore = 85		--ColumnName = NewValue
+		where Firstname = 'Zha''Quon'; --Only where (Boolean)
+
+--Deleting Students
+delete from Students --Deleting from TableName
+	where FirstName = 'Zha''Quon'; --Where ColumnName (Boolean)
+
+
+--Altering Customers table
+ALTER TABLE Customers --Alter -> Table -> Customers
+	Add Updated datetime; --Adding column ColumnName, DataType
+
+ALTER TABLE Customers --Alter -> Table -> Customers
+	Alter Column Name varchar(50) not null; --Altering the Column ColumnName, DataType, not null
+
+ALTER TABLE Customers --Alter -> Table -> Customers
+	DROP COLUMN Updated; --Delete Column ColumnName
