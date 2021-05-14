@@ -35,9 +35,17 @@ Create Table Albums (
 -- Creating Table Songs
 Create Table Songs (
 	Id int primary key identity(1,1),
-	AlbumsId int not null foreign key references Albums(Id),
 	Song varchar(30) not null,
 	Plays int not null,
+);
+*/
+
+/*
+--Create Table Genre
+CREATE TABLE Genres (
+	Id int primary key identity(1,1),
+	AlbumsId int not null foreign key references Albums(Id),
+	Genre varchar(15) not null UNIQUE
 );
 */
 
@@ -54,7 +62,7 @@ Insert Bands
 			('John Jon and Johnson', 3, 'Tampa', 'Florida', 'Jazz'),
 			('The Mattson 2', 2, 'Cincinnati', 'Ohio', 'Pop'),
 			('JONAHHHHH', 1, 'Cincinnati','Ohio','Heavy Metal'),
-			('Katelyn at the Disco', 3, 'Denver','Colorado','Heavy Metal')
+			('Katelyn at the Disco', 3, 'Denver','Colorado','Heavy Metal');
 */
 
 /* 
@@ -62,7 +70,7 @@ Insert Bands
 Insert Albums
 	(BandsId, AlbumName, Sales, Date)
 		VALUES
-			((select id from bands where BandName like 'Greg%'), 'Develovibes', 9293012, '2-19-1990')
+			((select id from bands where BandName like 'Greg%'), 'Develovibes', 9293012, '2-19-1990');
 
 */
 
@@ -75,8 +83,39 @@ Insert Songs
 			((select id from Albums where AlbumName = 'Develovibes'), 'GitHub and Dance', 863453),
 			((select id from Albums where AlbumName = 'Develovibes'), 'SQLater', 347575),
 			((select id from Albums where AlbumName = 'Develovibes'), 'Looking C#', 574737),
-			((select id from Albums where AlbumName = 'Develovibes'), 'Java Mama', 946763)
+			((select id from Albums where AlbumName = 'Develovibes'), 'Java Mama', 946763);
 			
+*/
+
+/*
+--Inserting Genres
+INSERT Genres
+	(Genre)
+		VALUES
+			('Heavy Metal'),
+			('Classical'),
+			('Pop'),
+			('Jazz'),
+			('Rap');
+*/
+
+/*
+-- Update Genres into Albums
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Classical'))
+		where BandsId = (select Id from Bands where BandName like 'Gre%')
+*/
+
+/*
+--Alter Bands, removing Genre
+ALTER TABLE Genres
+DROP COLUMN AlbumsId
+*/
+
+/*
+--Alter Albums, adding Genres
+ALTER TABLE Albums
+ADD GenresId int foreign key references Genres(Id)
 */
 
 -- View All Tables
@@ -84,5 +123,8 @@ select * from bands b
 	left join Albums a
 		on b.Id = a.BandsId
 	left join Songs s
-		on a.Id = s.AlbumsId;
+		on a.Id = s.AlbumsId
+	left join Genres g
+		on a.GenresId = g.Id
 
+select * from Genres
