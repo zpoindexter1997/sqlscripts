@@ -81,19 +81,25 @@ INSERT Vendors
 			('IFW','Infinity Ward','62 Infinity Drive','Charlotte','NC','36311','8283020811','infinity@ifw.com'),
 			('BUN','Bungie','77 Halo Ave','San Francisco','CA','92840','9449201134','bungie@bun.com');
 
+DECLARE @BethesdaId int= (select Id From Vendors where Code = 'BET');
+DECLARE @UbisoftId int = (select id from Vendors where code = 'UBI');
+DECLARE @ActivisionId int = (select id from Vendors where code = 'ACT');
+DECLARE @InfinityId int = (select id from Vendors where code = 'IFW');
+DECLARE @BungieId int = (select id from Vendors where code = 'BUN');
+
 INSERT Products
 	(PartNbr, Name, Price, Unit, VendorsId)
 		VALUES 
-			('121','Skyrim',59.99, 1, (select id from Vendors where code = 'BET')),
-			('122','Oblivion',179.99, 1, (select id from Vendors where code = 'BET')),
-			('123','Fallout 3',159.99, 1, (select id from Vendors where code = 'BET')),
-			('221','Watch Dogs',5.99, 1, (select id from Vendors where code = 'UBI')),
-			('222','Far Cry',59.99, 1, (select id from Vendors where code = 'UBI')),
-			('223','Ghost Recon',8.99, 1, (select id from Vendors where code = 'UBI')),
-			('321','Spyro',9.99, 1, (select id from Vendors where code = 'ACT')),
-			('421','Call of Duty: BO',99.99, 1, (select id from Vendors where code = 'IFW')),
-			('422','Call of Duty: MW2',89.99, 1, (select id from Vendors where code = 'IFW')),
-			('521','Halo 3',199.99, 1, (select id from Vendors where code = 'UBI'));
+			('121','Skyrim',59.99, 1, @BethesdaId),
+			('122','Oblivion',179.99, 1, @BethesdaId),
+			('123','Fallout 3',159.99, 1, @BethesdaId),
+			('221','Watch Dogs',5.99, 1, @UbisoftId),
+			('222','Far Cry',59.99, 1, @UbisoftId),
+			('223','Ghost Recon',8.99, 1, @UbisoftId),
+			('321','Spyro',9.99, 1, @ActivisionId ),
+			('421','Call of Duty: BO',99.99, 1, @InfinityId),
+			('422','Call of Duty: MW2',89.99, 1, @InfinityId),
+			('521','Halo 3',199.99, 1, @BungieId);
 
 INSERT Requests
 	(Description, Justification, UsersId)
