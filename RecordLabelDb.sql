@@ -123,7 +123,15 @@ UPDATE Albums set
 
 UPDATE Albums set
 	GenresId = ((select Id from Genres where Genre = 'Pop'))
-		where BandsId = (select Id from Bands where BandName like 'Cha%' or BandName like 'Sar%' or BandName like 'The Ma%');
+		where BandsId = (select Id from Bands where BandName like 'Cha%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Pop'))
+		where BandsId = (select Id from Bands where BandName like 'Sar%');
+
+UPDATE Albums set
+	GenresId = ((select Id from Genres where Genre = 'Pop'))
+		where BandsId = (select Id from Bands where BandName like 'The Ma%');
 
 UPDATE Albums set
 	GenresId = ((select Id from Genres where Genre = 'Rap'))
