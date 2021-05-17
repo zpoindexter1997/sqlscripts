@@ -100,22 +100,22 @@ CREATE OR ALTER PROCEDURE FindStudentByFirstNameAndLastName -- Create if nonexis
 	@LastName varchar(30) = null --Variable @VariableName, DataType, initialized as null
 as --Must be included
 begin --Here is where the script starts
-	select *	
+	if @FirstNAme = '' --Check this condition and if it is true, run this script
+		begin	--Here is where the script starts
+			Print '@FirstName is required!'	--Print the following
+			return	--Don't run any script after this
+		end	--Here is where the script ends
+	if @LastName = '' --Check this condition and if it is true, run this script
+		begin
+			Print '@LastName is required!'
+			return	--If there is no return here, it'd continue the next script even if 'If' was true
+		end
+	select *	--If both above 'If' conditions are false, proceed with this script
 		from Students	
 			where FirstName = @FirstName and LastName = @LastName;
 end --Here is where the script ends
 
 exec FindStudentByFirstNameAndLastName Zha''Quon, Poindexter  --Execute Procedure ProcedureName, Parameter1, Parameter2
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -134,4 +134,5 @@ KEY (Line - Concept - Page)
 88 - Converting DataTypes - SQL Pg. 40
 93 - Viewing Data from Parameters Declared - SQL Pg. 35
 97 - Creating/Altering a Procedure - SQL Pg. 51
+103 - If/Return statements - SQL Pg. 54
 */
