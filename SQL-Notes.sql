@@ -109,38 +109,38 @@ begin --Here is where the script starts
 		begin	--Begin this script (if the 'If' is true)
 			select *	
 				from Students	
-					where FirstName = @FirstName and LastName = @LastName;
+					where FirstName = @FirstName and LastName = @LastName; --You'll have to enter data for FirstName and LastName
 		end
 	else	--If the previous 'If' is false, run this script instead
 	begin
 		select *	
 			from Students	
-				where FirstName = @FirstName; --
+				where FirstName = @FirstName; --You'll only have to enter data in for FirstName
 	end
 end --Here is where the script ends
 
 exec FindStudentByFirstNameAndLastName Zha''Quon, Poindexter  --Execute Procedure ProcedureName, Parameter1, Parameter2
 
+--WHILE Loops
+DECLARE @cnt int = 0; --Declaring Variable @VariableName, DataType, initialized to 0
+DECLARE @nbr int = 3; --Declaring Variable @VariableName, DataType, initialized to 3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+WHILE @cnt < 1000 -- Checks @VariableName in boolean (Is @cnt < 1000?)
+	BEGIN	--Script Starts
+		if @nbr % 9 = 0 --Checks IF @VariableName boolean (Is @nbr divisible by 9 with a remainder of 0?) If true, do this script
+			BEGIN	--Script Starts
+				set @nbr = @nbr + 3;	--Sets the value of VariableName = NewValue (@nbr + 3)	
+				continue;	--Skip the next script (Skip printing @nbr if it's divisible by 9)
+			END		--Script Ends
+		Print @nbr;		--Prints the value of @VariableName (Prints @nbr Value)
+		Set @nbr = @nbr + 3;	--Sets the value of VariableName = NewValue (@nbr + 3)
+		Set @cnt = @cnt + 1;	--Sets the value of VariableName = NewValue (@cnt + 1)
+		if @nbr > 100 --Checks IF @VariableName boolean (Is @nbr > 100?), if true do this script
+			BEGIN -- Script Starts
+				break;	--Stop the loop
+			END;	--Script Ends
+	END		--Script Ends
+Print 'Done...' --Prints 'string' after WHILE Loop is skipped (Either the WHILE is falso or the IF is true)
 
 
 
@@ -179,4 +179,5 @@ KEY (Line - Concept - Page)
 93 - Viewing Data from Parameters Declared - SQL Pg. 35
 97 - Creating/Altering a Procedure - SQL Pg. 51
 103 - If/Return statements - SQL Pg. 54
+124 - Flow Control (WHILE Loops, Continue, Break) - SQL Pg. 55
 */

@@ -28,3 +28,4 @@ GO
 exec AddUser 'Instructor', 'tothemax', 'Greg', 'Doud', null, null, 0, 0;
 
 select * from Users;
+
