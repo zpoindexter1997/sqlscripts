@@ -15,6 +15,7 @@ BEGIN
 		END
 	DELETE from Vendors
 		where Id = @id;
+		RETURN 0;
 END
 GO
 

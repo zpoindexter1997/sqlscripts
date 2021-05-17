@@ -34,7 +34,7 @@ BEGIN
 END
 GO
 
-EXEC UpdateVendor 6, 'ND', 'Naughty Dog', '444 Naughty Drive', 'San Francisco','CA','95010','5919293042','naughtydog@nd.com'
+EXEC UpdateVendor 7, 'ND', 'Naughty Dog', '444 Naughty Drive', 'San Francisco','CA','95010','5919293042','naughtydog@nd.com'
 
 
 select * from Vendors
