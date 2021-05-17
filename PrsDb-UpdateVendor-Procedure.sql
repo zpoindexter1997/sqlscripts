@@ -10,9 +10,9 @@ CREATE OR ALTER PROCEDURE UpdateVendor
 @email varchar(255) = ''
 AS
 BEGIN
-	IF @id = 0 or @code = '' or @name = '' or @address = '' or @city = '' or @state = '' or @zip = '' or @phone = '' or @email = ''
+	IF @id = 0
 		BEGIN
-			PRINT 'Missing Required Information'
+			PRINT 'Missing Required Vendor Id'
 			RETURN -1;
 		END
 	IF not exists (select 1 from Vendors where Id = @id)
@@ -30,6 +30,7 @@ BEGIN
 		Phone = @phone,
 		Email = @email
 			WHERE Id = @id
+		RETURN 0;
 END
 GO
 
