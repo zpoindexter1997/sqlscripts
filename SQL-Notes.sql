@@ -105,21 +105,65 @@ begin --Here is where the script starts
 			Print '@FirstName is required!'	--Print the following
 			return	--Don't run any script after this
 		end	--Here is where the script ends
-	if @LastName = '' --Check this condition and if it is true, run this script
-		begin
-			Print '@LastName is required!'
-			return	--If there is no return here, it'd continue the next script even if 'If' was true
+	if @LastName <> '' --Checks if you entered something into this Variable
+		begin	--Begin this script (if the 'If' is true)
+			select *	
+				from Students	
+					where FirstName = @FirstName and LastName = @LastName;
 		end
-	select *	--If both above 'If' conditions are false, proceed with this script
-		from Students	
-			where FirstName = @FirstName and LastName = @LastName;
+	else	--If the previous 'If' is false, run this script instead
+	begin
+		select *	
+			from Students	
+				where FirstName = @FirstName; --
+	end
 end --Here is where the script ends
 
 exec FindStudentByFirstNameAndLastName Zha''Quon, Poindexter  --Execute Procedure ProcedureName, Parameter1, Parameter2
 
 
 
-/* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 166
 SQL NOTES
 KEY (Line - Concept - Page)
 01 - Using Database
