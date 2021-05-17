@@ -94,18 +94,18 @@ Set @abc = convert(int, '123'); -- Selecting @(VariableName), = Converting(NewDa
 select * from Students
 	where AssessmentScore >= @MinScore and AssessmentScore <= @MaxScore --Where ColumnName is >= Variable @(VariableName) and ColumnName is <= Variable @(VariableName) 
 
+--Creating/Altering a Procedure
+CREATE OR ALTER PROCEDURE FindStudentByFirstNameAndLastName -- Create if nonexistent, if it exists alter procedure ProcedureName
+	@FirstName varchar(30) = null, --Variable @VariableName, DataType, initialized as null
+	@LastName varchar(30) = null --Variable @VariableName, DataType, initialized as null
+as --Must be included
+begin --Here is where the script starts
+	select *	
+		from Students	
+			where FirstName = @FirstName and LastName = @LastName;
+end --Here is where the script ends
 
-
-
-
-
-
-
-
-
-
-
-
+exec FindStudentByFirstNameAndLastName Zha''Quon, Poindexter  --Execute Procedure ProcedureName, Parameter1, Parameter2
 
 
 
@@ -123,14 +123,15 @@ select * from Students
 SQL NOTES
 KEY (Line - Concept - Page)
 01 - Using Database
-05 - Create Table
-38 - Insert Data
-61 - Updating Data
-66 - Deleting Data
-71 - Altering/Adding to Table
-75 - Altering/Altering Tables
-79 - Altering/Dropping Tables
-83 - Declaring Variables for Parameters
+05 - Create Table - SQL Pg. 64
+38 - Insert Data - SQL Pg. 43
+61 - Updating Data - SQL Pg. 43
+66 - Deleting Data - SQL Pg. 43 
+71 - Altering/Adding to Table - SQL Pg. 64
+75 - Altering/Altering Tables - SQL Pg. 64
+79 - Altering/Dropping Tables - SQL Pg. 64
+83 - Declaring Variables for Parameters - SQL Pg. 35
 88 - Converting DataTypes - SQL Pg. 40
-93 - Viewing Data from Parameters Declared
+93 - Viewing Data from Parameters Declared - SQL Pg. 35
+97 - Creating/Altering a Procedure - SQL Pg. 51
 */
